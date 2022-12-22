@@ -1,4 +1,4 @@
-import { GildedRose, Item } from "@/gilded-rose";
+import { Item } from "@/items/Item";
 import { gildedRoseTimeFastForward } from "./utils";
 
 const BACKSTAGE_PASSES_ITEM_NAME = 'Backstage passes to a TAFKAL80ETC concert';

@@ -1,4 +1,4 @@
-import { Item } from "@/gilded-rose";
+import { Item } from "@/items/Item";
 import {gildedRoseTimeFastForward, MAX_QUALITY} from "./utils";
 
 const AGED_BRIE_ITEM_NAME = 'Aged Brie';

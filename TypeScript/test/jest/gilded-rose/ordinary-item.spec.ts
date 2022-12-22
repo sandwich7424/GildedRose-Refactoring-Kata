@@ -1,4 +1,4 @@
-import { Item } from "@/gilded-rose";
+import { Item } from "@/items/Item";
 import { gildedRoseTimeFastForward, MIN_QUALITY } from "./utils";
 
 const ORDINARY_ITEM_NAME = 'Ordinary Item';

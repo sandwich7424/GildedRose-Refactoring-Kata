@@ -1,4 +1,5 @@
-import { GildedRose, Item } from "@/gilded-rose";
+import { GildedRose } from "@/gilded-rose";
+import { Item } from "@/items/Item";
 
 export const MAX_QUALITY = 50;
 export const MIN_QUALITY = 0;
