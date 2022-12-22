@@ -1,4 +1,9 @@
+import { ProcessableItem } from "./interfaces/ProcessableItem";
+import { AgedBrie } from "./items/AgedBrie";
+import { BackstagePasses } from "./items/BackstagePasses";
 import { Item } from "./items/Item";
+import { OrdinaryItem } from "./items/OrdinaryItem";
+import { Sulfuras } from "./items/Sulfuras";
 
 export class GildedRose {
   items: Array<Item>;
@@ -7,41 +12,21 @@ export class GildedRose {
     this.items = items;
   }
 
-  updateQuality() {
-    for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].name === 'Sulfuras, Hand of Ragnaros') {
-        // do nothing
-      } else if (this.items[i].name === 'Aged Brie') {
-        if (this.items[i].sellIn <= 0) {
-          this.items[i].quality += 2;
-        } else {
-          this.items[i].quality += 1;
-        }
-        this.items[i].quality = this.items[i].quality > 50 ? 50 : this.items[i].quality;
-        this.items[i].sellIn--;
-      } else if (this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert') {
-        if (this.items[i].sellIn > 10) {
-          this.items[i].quality += 1;
-        } else if (this.items[i].sellIn > 5) {
-          this.items[i].quality += 2;
-        } else if (this.items[i].sellIn > 0) {
-          this.items[i].quality += 3
-        } else {
-          this.items[i].quality = 0;
-        }
-        this.items[i].quality = this.items[i].quality > 50 ? 50 : this.items[i].quality;
-        this.items[i].sellIn--;
-      } else {
-        if (this.items[i].sellIn <= 0) {
-          this.items[i].quality -= 2;
-        } else {
-          this.items[i].quality -= 1;
-        }
-        this.items[i].quality = this.items[i].quality < 0 ? 0 : this.items[i].quality;
-        this.items[i].sellIn--;
-      }
+  private makeItemProcessable(item: Item): ProcessableItem {
+    switch(item.name) {
+      case 'Sulfuras, Hand of Ragnaros':
+        return new Sulfuras(item.name, item.sellIn, item.quality);
+      case 'Backstage passes to a TAFKAL80ETC concert':
+        return new BackstagePasses(item.name, item.sellIn, item.quality);
+      case 'Aged Brie':
+        return new AgedBrie(item.name, item.sellIn, item.quality);
+      default:
+        return new OrdinaryItem(item.name, item.sellIn, item.quality);
     }
+  }
 
+  updateQuality() {
+    this.items = this.items.map((item: Item) => this.makeItemProcessable(item).process());
     return this.items;
   }
 }
