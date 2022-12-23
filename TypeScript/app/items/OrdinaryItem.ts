@@ -1,4 +1,5 @@
 import { ProcessableItem } from "@/interfaces/ProcessableItem";
+import { MIN_QUALITY } from "@/utils/constants";
 import { Item } from "./Item";
 
 export class OrdinaryItem extends Item implements ProcessableItem {
@@ -9,7 +10,7 @@ export class OrdinaryItem extends Item implements ProcessableItem {
     } else {
       this.quality -= 1;
     }
-    this.quality = Math.max(this.quality, 0);
+    this.quality = Math.max(this.quality, MIN_QUALITY);
   }
 
   private updateSellIn() {
