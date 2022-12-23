@@ -1,5 +1,6 @@
 import { Item } from "@/items/Item";
-import { gildedRoseTimeFastForward, MIN_QUALITY } from "./utils";
+import { MIN_QUALITY } from "@/utils/constants";
+import { gildedRoseTimeFastForward } from "./utils";
 
 const ORDINARY_ITEM_NAME = 'Ordinary Item';
 

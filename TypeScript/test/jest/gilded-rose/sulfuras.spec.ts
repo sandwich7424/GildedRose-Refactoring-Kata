@@ -1,5 +1,6 @@
 import { Item } from "@/items/Item";
-import {gildedRoseTimeFastForward, MAX_QUALITY} from "./utils";
+import { MAX_QUALITY } from "@/utils/constants";
+import {gildedRoseTimeFastForward} from "./utils";
 
 const SULFURAS_ITEM_NAME = 'Sulfuras, Hand of Ragnaros';
 
