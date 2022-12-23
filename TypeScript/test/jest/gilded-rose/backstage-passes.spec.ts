@@ -1,4 +1,5 @@
 import { Item } from "@/items/Item";
+import { MAX_QUALITY } from "@/utils/constants";
 import { gildedRoseTimeFastForward } from "./utils";
 
 const BACKSTAGE_PASSES_ITEM_NAME = 'Backstage passes to a TAFKAL80ETC concert';
@@ -38,6 +39,15 @@ describe('Testing changes of quality', () => {
             daysToTest
         );
         expect(items[0].quality).toBe(0);
+    });
+
+    it('Test of possibility of increase item quality above max level', () => {
+        const [remainDays, startQuality, daysToTest] = [30, MAX_QUALITY - 10, 20];
+        const items = gildedRoseTimeFastForward(
+            new Item(BACKSTAGE_PASSES_ITEM_NAME, remainDays, startQuality),
+            daysToTest
+        );
+        expect(items[0].quality).toBe(MAX_QUALITY);
     });
 });
 
