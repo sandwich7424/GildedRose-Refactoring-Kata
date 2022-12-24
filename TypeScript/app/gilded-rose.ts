@@ -1,6 +1,7 @@
 import { ProcessableItem } from "./interfaces/ProcessableItem";
 import { AgedBrie } from "./items/AgedBrie";
 import { BackstagePasses } from "./items/BackstagePasses";
+import { ConjuredItem } from "./items/ConjuredItem";
 import { Item } from "./items/Item";
 import { OrdinaryItem } from "./items/OrdinaryItem";
 import { Sulfuras } from "./items/Sulfuras";
@@ -20,6 +21,8 @@ export class GildedRose {
         return new BackstagePasses(item.name, item.sellIn, item.quality);
       case 'Aged Brie':
         return new AgedBrie(item.name, item.sellIn, item.quality);
+      case 'Conjured Item':
+        return new ConjuredItem(item.name, item.sellIn, item.quality);
       default:
         return new OrdinaryItem(item.name, item.sellIn, item.quality);
     }
