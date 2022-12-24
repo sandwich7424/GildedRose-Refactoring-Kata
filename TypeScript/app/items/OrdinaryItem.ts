@@ -4,11 +4,14 @@ import { Item } from "./Item";
 
 export class OrdinaryItem extends Item implements ProcessableItem {
 
+  static readonly qualityChangeBeforeExp = 1;
+  static readonly qualityChangeAfterExp = OrdinaryItem.qualityChangeBeforeExp * 2;
+
   private updateQuality() {
     if (this.sellIn <= 0) {
-      this.quality -= 2;
+      this.quality -= OrdinaryItem.qualityChangeAfterExp;
     } else {
-      this.quality -= 1;
+      this.quality -= OrdinaryItem.qualityChangeBeforeExp;
     }
     this.quality = Math.max(this.quality, MIN_QUALITY);
   }
