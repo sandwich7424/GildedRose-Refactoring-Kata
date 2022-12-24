@@ -4,6 +4,7 @@ import { Item } from "./Item";
 
 export class OrdinaryItem extends Item implements ProcessableItem {
 
+  // TODO: Zmienić to jutro, nie podoba mi się to
   static readonly qualityChangeBeforeExp = 1;
   static readonly qualityChangeAfterExp = OrdinaryItem.qualityChangeBeforeExp * 2;
 
